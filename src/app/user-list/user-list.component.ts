@@ -6,7 +6,7 @@ import { UserServiceService } from '../shared/services/user-service.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnChanges {
+export class UserListComponent implements OnInit {
   public users: string[];
 
   constructor(
@@ -15,14 +15,10 @@ export class UserListComponent implements OnChanges {
   ) { }
 
   ngOnInit() {
-    this.users;
-    this.serviceUser;
+    this.serviceUser.users2.subscribe((users) => {
+      this.users = users;
+    });
     console.log("coucou2");
     // il faut initialiser les users ici avec le service
   }
-  ngOnChanges() {
-    this.users = this.serviceUser.users2.getValue();
-    console.log("coucou2");
-  }
-
 }
